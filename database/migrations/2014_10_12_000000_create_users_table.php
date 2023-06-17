@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('username')->unique();
             $table->string('password');
-            $table->string('token');
+            $table->string('token')->nullable();
             $table->string('ban_reason')->nullable();
             $table->timestamp('last_login');
             $table->timestamps();

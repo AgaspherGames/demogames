@@ -18,6 +18,11 @@ class Game extends Model
         'user_id',
     ];
 
+    public function latestVersion()
+    {
+        return $this->hasOne(GameVersion::class)->latest();
+    }
+
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
     }

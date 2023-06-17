@@ -120,6 +120,22 @@ class GameVersionSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+        GameVersion::create([
+            'game_id' => 2,
+            'version' => now(),
+            'path' => '/games/123',
+
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        GameVersion::create([
+            'game_id' => 3,
+            'version' => now(),
+            'path' => '/games/124',
+
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }
 class GameScoreSeeder extends Seeder
