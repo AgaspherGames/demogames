@@ -16,6 +16,15 @@ class GameVersion extends Model
         'path',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleted(function ($parent) {
+            $parent->game_scores()->delete();
+        });
+    }
+
     public function game(){
         return $this->belongsTo(Game::class, 'game_id');
     }

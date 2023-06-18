@@ -26,7 +26,6 @@ class DatabaseSeeder extends Seeder
             GameScoreSeeder::class,
         ]);
     }
-
 }
 
 class UserSeeder extends Seeder
@@ -151,7 +150,7 @@ class GameScoreSeeder extends Seeder
             'updated_at' => now(),
         ]);
         GameScore::create([
-            'user_id' => 1,
+            'user_id' => 2,
             'game_version_id' => 1,
             'score' => 6,
 
@@ -168,7 +167,15 @@ class GameScoreSeeder extends Seeder
         ]);
         GameScore::create([
             'user_id' => 2,
-            'game_version_id' => 1,
+            'game_version_id' => 3,
+            'score' => 1,
+
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        GameScore::create([
+            'user_id' => 1,
+            'game_version_id' => 3,
             'score' => 5,
 
             'created_at' => now(),

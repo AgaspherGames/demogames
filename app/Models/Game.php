@@ -18,15 +18,39 @@ class Game extends Model
         'user_id',
     ];
 
-    public function latestVersion()
+    protected static function boot()
     {
-        return $this->hasOne(GameVersion::class)->latest();
+        parent::boot();
+
+        static::deleted(function ($parent) {
+            // $versions = $parent->game_versions();
+            $versions = $parent->game_versions;
+            foreach($versions as $version){
+                $version->delete();
+            }
+        });
     }
 
-    public function user(){
+
+    public function latestVersion()
+    {
+        return $this->hasOne(GameVersion::class)->latestOfMany();
+    }
+
+
+    public function user()
+    {
         return $this->belongsTo(User::class, 'user_id');
     }
-    public function game_versions(){
+    public function game_versions()
+    {
         return $this->hasMany(GameVersion::class);
+    }
+    public function gameScores()
+    {
+        return 4;
+        return $this->game_versions->sum(function ($query) {
+            return $query->game_scores->count();
+        });
     }
 }

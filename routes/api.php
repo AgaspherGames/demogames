@@ -27,4 +27,14 @@ Route::prefix('/v1')->group(function () {
     });
 
     Route::get('/games', [GameController::class, 'index']);
+    Route::get('/games/{slug}', [GameController::class, 'show']);
+    Route::group(["middleware" => 'auth:sanctum'], function () {
+        Route::post('/games', [GameController::class, 'store']);
+        Route::post('/games/{slug}/upload', [GameController::class, 'upload']);
+        Route::put('/games/{slug}', [GameController::class, 'update']);
+        Route::delete('/games/{slug}', [GameController::class, 'delete']);
+    });
+
+    Route::get('/users/{username}', [UserController::class, 'show']);
+
 });
