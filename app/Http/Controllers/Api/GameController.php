@@ -17,7 +17,7 @@ class GameController extends Controller
     public function index(Request $request)
     {
         $page = $request->query('page') ?: 0;
-        $size = $request->query('size') ?: 10;
+        $size = $request->query('size') ?: 2;
         $sortBy = $request->query('sortBy') ?: 'title';
         $sortDir = $request->query('sortDir') ?: 'asc';
 
@@ -35,7 +35,7 @@ class GameController extends Controller
         return [
             'page' => $games->currentPage(),
             'size' => $size,
-            'totalElements' => $games->count(),
+            'totalElements' => $games->total(),
             'content' => GameResource::collection($games->items())
         ];
 

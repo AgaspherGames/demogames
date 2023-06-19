@@ -17,7 +17,7 @@ class HightScoreResource extends JsonResource
         return [
             "score"=>$this->score,
             "timestamp"=>$this->created_at,
-            "game"=>new GameUserResource($this->game_version->game),
+            // "game"=>new GameUserResource($this->game_version->game),
         ];
     }
 }

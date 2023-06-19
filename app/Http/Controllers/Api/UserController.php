@@ -66,7 +66,7 @@ class UserController extends Controller
             ];
     }
     public function show(string $username){
-        $user = User::where('username', $username)->first();
+        $user = User::where('username', $username)?->firstOrFail();
         return new UserResource($user);
     }
 }

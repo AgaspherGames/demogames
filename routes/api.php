@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\GameController;
+use App\Http\Controllers\Api\ScoreController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,7 +29,9 @@ Route::prefix('/v1')->group(function () {
 
     Route::get('/games', [GameController::class, 'index']);
     Route::get('/games/{slug}', [GameController::class, 'show']);
+    Route::get('/games/{slug}/scores', [ScoreController::class, 'show']);
     Route::group(["middleware" => 'auth:sanctum'], function () {
+        Route::post('/games/{slug}/scores', [ScoreController::class, 'create']);
         Route::post('/games', [GameController::class, 'store']);
         Route::post('/games/{slug}/upload', [GameController::class, 'upload']);
         Route::put('/games/{slug}', [GameController::class, 'update']);

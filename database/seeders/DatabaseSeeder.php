@@ -49,6 +49,15 @@ class UserSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+        User::create([
+            'username' => 'user3',
+            'password' => bcrypt('password3'),
+            'token' => 'token3',
+
+            'last_login' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }
 class AdminSeeder extends Seeder
@@ -177,6 +186,14 @@ class GameScoreSeeder extends Seeder
             'user_id' => 1,
             'game_version_id' => 3,
             'score' => 5,
+
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        GameScore::create([
+            'user_id' => 3,
+            'game_version_id' => 1,
+            'score' => 100,
 
             'created_at' => now(),
             'updated_at' => now(),
